@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>One</title>
+<meta name="description" content="progress and synergy">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&subset=cyrillic,latin&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#000;--mut:#555;--line:#ddd;--on:#000;--onink:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#000;--ink:#fff;--mut:#aaa;--line:#333;--on:#fff;--onink:#000;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 Montserrat,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+
+.logo svg{display:block;height:26px;width:auto;fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+.bar{max-width:720px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;gap:16px}
+.logo{font-weight:600;font-size:22px;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:6px;margin-left:auto}
+nav a{color:var(--mut);text-decoration:none;font:500 16px Montserrat,system-ui,sans-serif;padding:6px 10px;border-radius:8px}
+nav a:hover{color:var(--ink)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{font:500 14px Montserrat,system-ui,sans-serif;border:0;background:none;color:var(--mut);padding:6px 12px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--on);color:var(--onink)}
+.theme{border:1px solid var(--line);background:none;color:var(--ink);width:36px;height:36px;border-radius:50%;cursor:pointer;display:grid;place-items:center;padding:0;flex:none}
+.theme svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.theme .sn{display:none}
+html[data-theme="dark"] .theme .mn{display:none}
+html[data-theme="dark"] .theme .sn{display:block}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+main{max-width:720px;margin:0 auto;padding:32px 20px 80px}
+section{padding:16px 0 40px}
+section+section{border-top:1px solid var(--line);padding-top:48px}
+.t{white-space:pre-wrap;margin:0}
+.L{display:none}
+html[data-lang="ru"] .ru,html[data-lang="ua"] .ua,html[data-lang="en"] .en{display:block}
+a.m{color:var(--ink)}
+@media (max-width:480px){.bar{gap:6px;padding:0 10px}.logo{font-size:20px}nav a{padding:6px 7px}.lang button{padding:6px 9px}}
+:root{--glass:rgba(255,255,255,.58);--gb:rgba(0,0,0,.07);--hi:rgba(255,255,255,.95);--gs:0 10px 34px rgba(0,0,0,.10);--thumb:#fff;--track:rgba(0,0,0,.06);--sheen:.55}
+:root[data-theme="dark"]{--glass:rgba(28,28,30,.5);--gb:rgba(255,255,255,.16);--hi:rgba(255,255,255,.22);--gs:0 10px 34px rgba(0,0,0,.55);--thumb:rgba(255,255,255,.2);--track:rgba(255,255,255,.08);--sheen:.12}
+html{scroll-padding-top:96px}
+header{background:transparent;border:0;padding:10px 12px 0}
+.bar{position:relative;height:58px;padding:0 10px 0 24px;gap:10px;border-radius:999px;background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid var(--gb);box-shadow:var(--gs),inset 0 1px 0 var(--hi),inset 0 -1px 0 var(--gb)}
+.bar::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,var(--sheen)),rgba(255,255,255,0) 45%)}
+.bar>*{position:relative}
+.lang{border:0;background:var(--track);padding:3px}
+.lang button[aria-pressed="true"]{background:var(--thumb);color:var(--ink);box-shadow:0 1px 5px rgba(0,0,0,.2),inset 0 1px 0 var(--hi)}
+.lang button{transition:background-color .35s ease,color .35s ease,box-shadow .35s ease}
+.theme{border:0;background:var(--track);position:relative}
+.theme svg{position:absolute;transition:opacity .4s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.theme .mn,.theme .sn{display:block}
+.theme .sn{opacity:0;transform:rotate(-70deg) scale(.5)}
+html[data-theme="dark"] .theme .mn{display:block;opacity:0;transform:rotate(70deg) scale(.5)}
+html[data-theme="dark"] .theme .sn{display:block;opacity:1;transform:none}
+body,.bar,.theme,nav a,a.m,section{transition:background-color .45s ease,color .45s ease,border-color .45s ease,box-shadow .45s ease}
+.L{animation:fi .5s ease both}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (max-width:480px){header{padding:8px 8px 0}.bar{height:54px;padding:0 8px 0 16px;gap:4px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+.barw{position:relative;max-width:720px;margin:0 auto}
+.bar{max-width:none;margin:0;border:0;border-radius:29px;box-shadow:none}
+.sq .bar{border-radius:0}
+.sh,.bd{position:absolute;overflow:visible;pointer-events:none}
+.sh{left:-40px;top:-30px;opacity:var(--shop)}
+.bd{left:0;top:0;z-index:2}
+.bd path{fill:none;stroke:var(--bds);stroke-width:.5}
+:root{--bds:rgba(0,0,0,.2);--shop:.5}
+:root[data-theme="dark"]{--bds:rgba(255,255,255,.3);--shop:1}
+@media (max-width:520px){nav{display:none}}
+.logo svg{display:block;height:30px;width:auto;fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+:root{--bds:rgba(0,0,0,.14)}
+:root[data-theme="dark"]{--bds:rgba(255,255,255,.26)}
+.barw{max-width:1400px}
+.bar{border:.5px solid var(--bds);border-radius:52px/50%;clip-path:none;box-shadow:var(--gs),inset 0 1px 0 var(--hi)}
+main{max-width:1400px;padding:40px 24px 90px}
+body{font-size:20px;line-height:1.65}
+.one-line{white-space:nowrap}
+
+@media (max-width:480px){.bar{border-radius:46px/50%}main{padding:28px 18px 80px}}
+:root{--veil:rgba(255,255,255,.65)}
+:root[data-theme="dark"]{--veil:rgba(0,0,0,.6)}
+header{position:sticky;padding:0;isolation:isolate;background:none;border:0}
+header::before,header::after{content:"";position:absolute;left:0;right:0;top:0;pointer-events:none;z-index:-1}
+header::before{bottom:-46px;-webkit-backdrop-filter:blur(26px) saturate(170%);backdrop-filter:blur(26px) saturate(170%);background:linear-gradient(to bottom,var(--veil),transparent);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 35%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 35%,transparent 100%)}
+header::after{bottom:-18px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%)}
+.barw{max-width:1400px;margin:0 auto}
+.bar{height:64px;padding:0 24px;gap:14px;background:none;border:0;border-radius:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.bar::before{display:none}
+.logo{font-weight:300;font-size:28px;letter-spacing:.01em;line-height:1}
+.tm{display:flex;gap:4px;margin-left:auto}
+.tm button{font:500 14px Montserrat,system-ui,sans-serif;background:none;border:0;color:var(--mut);padding:8px 10px;cursor:pointer;border-radius:8px;transition:color .35s ease}
+.tm button[aria-pressed="true"]{color:var(--ink);font-weight:600}
+.tm button:hover{color:var(--ink)}
+.tm i{display:none;font-style:normal}
+html[data-lang="en"] .t-en,html[data-lang="ua"] .t-ua,html[data-lang="ru"] .t-ru{display:inline}
+nav{margin-left:0}
+@media (max-width:620px){.bar{flex-wrap:wrap;height:auto;padding:10px 16px 4px;row-gap:0}.lang{margin-left:auto}.tm{order:3;margin-left:-10px;width:100%}.logo{font-size:26px}}
+.bar{height:78px;gap:18px}
+.logo{font-size:36px}
+.tm button{font-size:17px;padding:9px 12px}
+nav a{font-size:19px;padding:8px 12px}
+.lang button{font-size:16px;padding:8px 15px}
+@media (max-width:620px){.bar{height:auto;padding:12px 16px 4px}.logo{font-size:32px}.tm{margin-left:-12px}.tm button{font-size:16px}.lang button{font-size:15px;padding:7px 12px}}
+.tm button{color:var(--ink);font-weight:500}
+.tm button{font-weight:300}
+.bar{justify-content:center;gap:26px}
+.tm{margin-left:0}
+.lang{margin-left:0}
+.t{text-align:center}
+@media (max-width:620px){.bar{gap:6px 18px}.tm{width:100%;margin-left:0;justify-content:center;display:flex}.lang{margin-left:0}}
+.t{text-align:left}
+main,.barw{max-width:calc(var(--tw,1132px) + 48px);transition:max-width .45s ease}
+.bar{justify-content:space-between;gap:12px}
+@media (max-width:620px){.bar{justify-content:space-between}}
+.logo{font-size:45px;font-weight:200;letter-spacing:.02em}
+.bar{height:92px;justify-content:flex-start;gap:22px}
+.tm{margin-left:auto}
+body{line-height:1.85}
+.t{margin:0 0 2.1em}
+section{padding:48px 0 88px}
+section+section{padding-top:104px}
+main{padding-top:72px;padding-bottom:140px}
+@media (max-width:620px){.bar{height:auto;gap:8px 16px;justify-content:flex-start}.logo{font-size:40px}.lang{margin-left:auto}.tm{width:100%;margin-left:-12px;justify-content:flex-start}section{padding:32px 0 64px}section+section{padding-top:72px}main{padding-top:48px}}
+.t.g{margin-bottom:5.55em}
+.logo{font-size:60px}
+.bar{height:112px}
+@media (max-width:620px){.bar{height:auto}.logo{font-size:50px}}
+.logo{font-weight:100}
+.lang button{font-weight:200;font-size:19px;padding:8px 16px;color:var(--ink)}
+.lang button[aria-pressed="false"]{color:var(--mut)}
+@media (max-width:620px){.lang button{font-size:17px;padding:7px 13px}}
+.bar{align-items:center}
+.logo,nav a,.tm button,.lang button{line-height:1}
+@supports (text-box:trim-both cap alphabetic){
+.logo{text-box:trim-both cap alphabetic}
+nav a{text-box:trim-both cap alphabetic;padding:12px}
+.tm button{text-box:trim-both ex alphabetic;padding:14px 12px}
+.lang button{text-box:trim-both ex alphabetic;padding:11px 16px}
+@media (max-width:620px){.lang button{padding:10px 13px}}
+}
+@media (max-width:620px){
+.bar{flex-wrap:nowrap;height:84px;padding:0 14px;gap:8px;align-items:center}
+.logo{font-size:44px}
+nav{display:none}
+.tm{order:0;width:auto;margin-left:auto;display:flex}
+.tm button{font-size:14px;padding:14px 6px}
+.lang{margin-left:0}
+.lang button{font-size:16px;padding:10px 9px}
+}
+.logo{transform:translateY(-5px)}
+@media (max-width:620px){.logo{transform:translateY(-3px)}}
+.t.g2{margin-bottom:3.7em}
+nav a{font-weight:400}
+@supports (text-box:trim-both cap alphabetic){.tm button{text-box:trim-both cap alphabetic;padding-top:14px;padding-bottom:14px}}
+@supports not (text-box:trim-both cap alphabetic){
+.tm button{padding-top:calc(8px - .1em);padding-bottom:calc(8px + .1em)}
+.lang button{padding-top:calc(9px - .1em);padding-bottom:calc(9px + .1em)}
+}
+</style>
+</head>
+<body>
+<header><div class="barw"><div class="bar">
+<a class="logo" href="#top">One</a>
+<div class="tm"><button type="button" id="th">dark mode</button></div>
+<nav aria-label="Pages"><a data-n="1" href="#en1">1</a><a data-n="2" href="#en2">2</a><a data-n="3" href="#en3">3</a></nav>
+<div class="lang" role="group" aria-label="Language">
+<button data-l="en" aria-pressed="true">en</button><button data-l="ua" aria-pressed="false">ua</button><button data-l="ru" aria-pressed="false">ru</button>
+</div>
+</div></div></header>
+<main id="top">
+<div class="L en">
+<section id="en1"><p class="t g">level of living baseline (llb) — good housing, food, health
+minimum wage — 2 llb
+2 llb per month to mothers for contributing to the child’s development
+50 llb for development to everyone
+open-ended interest-free access to 50 llb for everyone
+0% unemployment
+100% good jobs
+maximum 15 minutes walk to work
+8-hour workday
+schedule 2/1
+vacation from 10%
+growth 250—300%
+0% bureaucracy
+90% less stress
+100% safety</p><p class="t g"><span class="o">One</span> will solve all problems
+<span class="one-line">deception poverty hatred stress wars fraud suicides psychological problems</span>
+demographic  migration  urban housing   crises</p><p class="t g g2"><span class="o">One</span>
+convenient reliable system
+for a better life for everyone</p><p class="t g g2"><span class="o">One</span> safety
+guarantor of safety
+you will forget the word “war” forever</p><p class="t g g2"><span class="o">One</span> development
+excellent housing all over the world
+available to everyone in <span class="o">One</span></p><p class="t g g2">talent management
+detailed work with talents</p><p class="t g g2">computer intelligence
+professional intelligence</p><p class="t g">pas foundation
+charity</p><p class="t"><a class="m" href="mailto:Onepasworld@gmail.com">Onepasworld@gmail.com</a></p></section>
+<section id="en2"><p class="t">good housing, food, employment
+safety, confidence, opportunities and development
+basic human needs that <span class="o">One</span> will provide to everyone in a short time</p><p class="t"><span class="o">One</span> bears full responsibility</p><p class="t">a good life is the minimum</p><p class="t">no wars</p><p class="t">no deception</p><p class="t">no fraudsters</p><p class="t">convenient architecture of everything
+you need to strain the mind
+not the nerves</p><p class="t">burnout will decrease by 97%</p><p class="t">the highest-paid occupation — multi-child motherhood</p><p class="t">a good life for all mothers with travel, delicious food, excellent housing will soon become reality</p><p class="t">there will be no problem of choosing a study or work direction and making the wrong choice
+<span class="o">One</span> will help find what you have abilities for and what will bring pleasure</p><p class="t">the task of <span class="o">One</span> is to unlock people</p><p class="t">you will no longer worry about your future and the future of your children</p><p class="t">everyone should know about such an opportunity
+everyone should make a decision</p><p class="t">ukraine and russia have incredible potential
+180 million people who need <span class="o">One</span></p><p class="t">people will decide — <span class="o">One</span> will start work</p><p class="t">90% of the world’s workers earn less than the minimum income of <span class="o">One</span></p><p class="t">6 billion people below the level of living baseline of <span class="o">One</span></p><p class="t">no one is responsible for everything that is happening
+<span class="o">One</span> bears full responsibility from day 1</p><p class="t">truth above all</p><p class="t">right now the greatest profit comes from human weaknesses, fears and foolishness
+the goal of <span class="o">One</span> is your development</p><p class="t">there will be orders of magnitude more unlocked talents and geniuses</p><p class="t"><span class="o">One</span> helps to implement what is planned</p><p class="t">convenience is very important
+first convenience for people, then internal questions</p><p class="t">everyone can support a system that guarantees world safety</p><p class="t"><span class="o">One</span> development will build billions of square meters of excellent housing in the best places of the world</p><p class="t">people will forget that housing can be a problem or a question</p><p class="t">people should not worry</p><p class="t">a person worries about the past and the future
+<span class="o">One</span> will remove these worries</p><p class="t">everyone from birth will have flexible development schedules</p><p class="t">there is an opportunity to live very well</p><p class="t">resources are sufficient</p><p class="t"><span class="o">One</span> will bring progress and safety to every corner of the world</p><p class="t">there is not a single person who will not benefit from this</p><p class="t">soon safety will stop being discussed because everyone will get used to it</p><p class="t"><span class="o">One</span>
+breakthrough in quality of life</p><p class="t">we will help with all questions and problems
+entrepreneurs, parents, talents</p><p class="t">we will pull billions of people out from below the poverty line
+among them millions of talents, geniuses, just good people</p><p class="t"><span class="o">One</span> has no limit on jobs</p><p class="t">responsible ones should create opportunities, not limit them</p><p class="t">the reputation of <span class="o">One</span> is its foundation</p><p class="t"><span class="o">One</span> will solve the problems of ukraine and russia</p><p class="t">ready for questions and discussions</p><p class="t">honesty is the best strategy</p><p class="t">a big task stands before us</p><p class="t">we can and must do it together</p><p class="t"><span class="o">One</span> is ready to take on any material</p><p class="t"><span class="o">One</span> will not punish anyone</p><p class="t">it will simply make everything better</p><p class="t">everyone can live much better</p><p class="t">talents, geniuses, good people should live much better</p><p class="t">in 25 years machines will be able to perform 90% of human labor</p><p class="t">a lot needs to be rethought
+we will do it together</p><p class="t">in the usa, switzerland, japan there is also a huge number of problems</p><p class="t">it will be better for everyone if everyone is helped</p><p class="t"><span class="o">One</span> will do it</p><p class="t">with <span class="o">One</span> robots will bring benefit to humanity</p><p class="t">a person must be confident in everything
+this is the task and work of <span class="o">One</span></p><p class="t">everyone will have a reserve of 50 living baselines</p><p class="t">the task for the next 50 years
+development, not luxury</p><p class="t"><span class="o">One</span> will eliminate unpleasant interactions between people</p><p class="t">the best life possible</p><p class="t">the right world for geniuses</p><p class="t">the world is our home
+let’s make it better</p><p class="t">a very large amount of strength and resources will be invested in the world safety infrastructure</p><p class="t"><span class="o">One</span> safety bears the responsibility of understanding and correcting</p><p class="t">everything must work well</p><p class="t"><span class="o">One</span> will create all conditions</p><p class="t">no disrespect</p><p class="t">no inequality</p><p class="t">equality of dignity
+no one can be belittled</p><p class="t">transparency, crystal clarity
+<span class="o">One</span> — reliable information</p><p class="t">answer all questions
+bear full responsibility
+never walk away from them or from it</p><p class="t"><span class="o">One</span> guarantees honesty</p><p class="t">ask questions and conduct discussions
+everything must be done correctly</p><p class="t">it is important that everyone contributes to the progress of the world</p><p class="t"><span class="o">One</span> will significantly raise the standard of living in any country</p><p class="t">with <span class="o">One</span> no conflicts are possible</p><p class="t">deception cannot exist</p><p class="t"><span class="o">One</span> supports initiative
+the system is open and attractive</p><p class="t">freedom of thought and action is extremely important</p><p class="t"><span class="o">One</span> highly values you, your mind and ideas
+gives maximum convenience and opportunities</p><p class="t">an infrastructure for the development of everyone and everything will be created</p><p class="t"><span class="o">One</span> is needed by everyone</p><p class="t">especially by talents and geniuses</p><p class="t">your development and the world’s development — the interests of <span class="o">One</span></p><p class="t">the world minimum will equal the swiss average standard of living and exceed it in taste and happiness</p><p class="t">minimum wage at the level of two top-tier living baselines</p><p class="t"><span class="o">One</span> will immediately create 100 million quality jobs</p><p class="t">no secret services or intelligence agencies
+progress and synergy
+truth and openness always win</p><p class="t">no crises</p><p class="t">no inflation</p><p class="t">global and ubiquitous safety</p><p class="t">anxiety will decrease by 96%</p><p class="t">you will always be able to reach out and you will be helped</p><p class="t">level of living baseline — rent of good housing, good food outside the home, good medicine</p><p class="t">encouragement of tourism and development, exclusion of unnecessary complexities</p><p class="t">ultimate reliability and confidence</p><p class="t"><span class="o">One</span> is ready</p><p class="t">the world deserves more</p><p class="t">humanity can live much better</p><p class="t">a person must be confident that in the worst case they will have decent housing, food and time</p><p class="t">everywhere there are big problems
+<span class="o">One</span> will fix them</p><p class="t"><span class="o">One</span> is useful to everyone</p><p class="t">all countries can participate</p><p class="t">countries are people who want to live well</p><p class="t">no one will be worse off</p><p class="t"><span class="o">One</span>
+your confidence in the future</p><p class="t">world system of progress and guarantor of world safety</p><p class="t">ukraine and russia will be open and successful</p><p class="t"><span class="o">One</span> will give opportunities to everyone</p><p class="t">refugees will be able to work at a good job from the second day</p><p class="t"><span class="o">One</span> will never infringe on anyone’s rights</p><p class="t">will bring advantages and benefit to everyone</p><p class="t">in your life there will be no bad or crazy people</p><p class="t"><span class="o">One</span> will not let you down</p><p class="t">people have enough knowledge not to allow crises and wars</p><p class="t">specialists will help you do your best work
+without unnecessary words and formalism</p><p class="t"><span class="o">One</span> gives full freedom, but when necessary will be nearby</p><p class="t">many resources will be directed to assisting talents and geniuses all over the world</p><p class="t">everyone should visit 100 cities</p><p class="t">everyone will be able to travel</p><p class="t">it is important to feel and understand that the whole world is home</p><p class="t"><span class="o">One</span> will defeat poverty</p><p class="t">not a single person will be poor</p><p class="t">this is fully within our power</p><p class="t">analyze, criticize and apply
+the main thing is the world result</p><p class="t">it is important to find the sphere in which one wants to develop</p><p class="t"><span class="o">One</span> will take care that in all spheres it is comfortable and full</p><p class="t">the entire mediterranean needs <span class="o">One</span>, having incredible potential
+the whole world</p><p class="t">everything points to the correctness and necessity of <span class="o">One</span></p><p class="t">wars cannot exist</p><p class="t"><span class="o">One</span> safety
+safety in every corner of the world</p><p class="t"><span class="o">One</span> will make the world much better</p><p class="t">humanity and love for people at the foundation</p><p class="t">your development and success — the interest and responsibility of <span class="o">One</span></p><p class="t">the life of everyone will become more joyful and pleasant than it ever was</p><p class="t">a wonderful future for participants</p><p class="t"><span class="o">One</span>
+the best environment for a person</p><p class="t">in 1000 days <span class="o">One</span> safety will radically change the feeling of safety in the world and the approach to it</p><p class="t">support <span class="o">One</span>
+the results of work will be felt everywhere</p><p class="t">at the base is a sincere desire to make things better</p><p class="t">in winter it is useful to sleep longer
+working time will be reduced</p><p class="t"><span class="o">One</span> is building a wonderful future</p><p class="t">the task is the development of talents
+not simply leaving some of them the chance to achieve something somehow
+that always leads to bad tendencies</p><p class="t">an approach of a different level</p><p class="t"><span class="o">One</span> belongs to the world
+beneficiaries — everyone</p><p class="t">a good life of all people is important</p><p class="t">there are resources for this</p><p class="t">principles — truth and openness</p><p class="t">made for everyone</p><p class="t">the participation of each is useful and important</p><p class="t"><span class="o">One</span> will make the minimum standard of living good</p><p class="t">will solve all problems of the former ussr, latin america, asia, africa</p><p class="t">an offer to all countries to become much more successful</p><p class="t"><span class="o">One</span> is necessary for billions of people</p><p class="t">an open understandable world with the best conditions</p><p class="t">soon <span class="o">One</span> safety will announce the first day in history without wars</p></section>
+<section id="en3"><p class="t">help ukraine, gaza, africa
+for real</p><p class="t">a solution to the ukrainian and world crisis</p><p class="t">you can support the guarantor of world safety</p><p class="t">thousandfold gratitude from billions of beneficiaries of <span class="o">One</span></p><p class="t"><span class="o">One</span> will eradicate wars and poverty</p><p class="t"><span class="o">One</span> is needed by 8 billion people</p><p class="t">2 billion without drinking water</p><p class="t">many have no guarantees and feel helpless</p><p class="t">people suffer, freeze, starve and perish only because there is still no <span class="o">One</span></p><p class="t">let’s change the world for the better</p><p class="t">take part, spread the word
+support</p><p class="t">invest time and intellect in the future</p><p class="t">it will pay off phenomenally</p><p class="t"><span class="o">One</span> will change the world
+safety truth openness progress synergy convenience reliability opportunities mind</p></section>
+</div>
+<div class="L ua">
+<section id="ua1"><p class="t g">прожитковий мінімум (пм) — хороше житло, їжа, здоров’я
+мінімальна зарплата — 2 пм
+2 пм на місяць мамам за сприяння розвитку дитини
+50 пм на розвиток усім
+безстроковий безвідсотковий допуск 50 пм усім
+0% безробіття
+100% хороших робочих місць
+до роботи максимум 15 хвилин пішки
+8-годинний робочий день
+графік 2/1
+відпустка від 10%
+зростання 250—300%
+0% бюрократії
+на 90% менше стресу
+100% безпеки</p><p class="t g"><span class="o">One</span> вирішить усі проблеми
+<span class="one-line">обман бідність ненависть стрес війни шахрайство самогубства психологічні проблеми</span>
+кризи   демографічна  міграційна  міського житла</p><p class="t g g2"><span class="o">One</span>
+зручна надійна система
+для кращого життя кожного</p><p class="t g g2"><span class="o">One</span> safety
+гарант безпеки
+ви забудете слово «війна» назавжди</p><p class="t g g2"><span class="o">One</span> development
+відмінне житло по всьому світу
+доступне всім в <span class="o">One</span></p><p class="t g g2">talent management
+детальна робота з талантами</p><p class="t g g2">computer intelligence
+професійний інтелект</p><p class="t g">pas foundation
+благодійність</p><p class="t"><a class="m" href="mailto:Onepasworld@gmail.com">Onepasworld@gmail.com</a></p></section>
+<section id="ua2"><p class="t">хороше житло, їжа, зайнятість
+безпека, впевненість, можливості та розвиток
+базові потреби людини, які <span class="o">One</span> забезпечить усім у короткі терміни</p><p class="t"><span class="o">One</span> несе повну відповідальність</p><p class="t">хороше життя — це мінімум</p><p class="t">ніяких війн</p><p class="t">ніякого обману</p><p class="t">ніяких шахраїв</p><p class="t">зручна архітектура всього
+треба напружувати розум
+не нерви</p><p class="t">вигорання знизиться на 97%</p><p class="t">найвищеоплачувана зайнятість — багатодітне материнство</p><p class="t">хороше життя всіх мам із подорожами, смачною їжею, відмінним житлом незабаром стане дійсністю</p><p class="t">не буде проблеми вибору напряму навчання чи роботи і неправильного вибору
+<span class="o">One</span> допоможе знайти, до чого у вас є здібності і що буде приносити задоволення</p><p class="t">завдання <span class="o">One</span> — розкривати людей</p><p class="t">ви більше не будете переживати про ваше майбутнє і майбутнє ваших дітей</p><p class="t">усі повинні знати про таку можливість
+кожен повинен прийняти рішення</p><p class="t">у україни неймовірний потенціал
+40 мільйонів людей, яким необхідний <span class="o">One</span></p><p class="t">люди вирішать — <span class="o">One</span> почне роботу</p><p class="t">90% працівників світу заробляють менше мінімального доходу <span class="o">One</span></p><p class="t">6 мільярдів людей нижче прожиткового мінімуму <span class="o">One</span></p><p class="t">у всього, що відбувається, немає відповідальних
+<span class="o">One</span> несе повну відповідальність з 1 дня</p><p class="t">правда понад усе</p><p class="t">зараз найбільше вигоди отримують від людських слабкостей, страхів і безглуздя
+мета <span class="o">One</span> у вашому розвитку</p><p class="t">розкритих талантів і геніїв стане на порядки більше</p><p class="t"><span class="o">One</span> допомагає реалізовувати задумане</p><p class="t">зручність дуже важлива
+спочатку зручність для людей, потім внутрішні питання</p><p class="t">усі можуть підтримати систему, яка гарантує світову безпеку</p><p class="t"><span class="o">One</span> development побудує мільярди квадратних метрів відмінного житла в найкращих місцях світу</p><p class="t">люди забудуть, що житло може бути проблемою чи питанням</p><p class="t">люди не повинні турбуватися</p><p class="t">людина переживає через минуле і майбутнє
+<span class="o">One</span> прибере ці переживання</p><p class="t">у всіх із народження будуть гнучкі графіки розвитку</p><p class="t">є можливість жити дуже добре</p><p class="t">ресурсів достатньо</p><p class="t"><span class="o">One</span> принесе розвиток і безпеку в кожен куточок світу</p><p class="t">немає жодної людини, хто від цього не виграє</p><p class="t">скоро безпеку перестануть обговорювати, бо всі звикнуть до неї</p><p class="t"><span class="o">One</span>
+прорив у якості життя</p><p class="t">допоможемо з усіма питаннями і проблемами
+підприємцям, батькам, талантам</p><p class="t">витягнемо мільярди людей з-під межі бідності
+серед них мільйони талантів, геніїв, просто хороших людей</p><p class="t">в <span class="o">One</span> немає обмеження на робочі місця</p><p class="t">відповідальні повинні створювати можливості, а не обмежувати</p><p class="t">репутація <span class="o">One</span> — його фундамент</p><p class="t"><span class="o">One</span> вирішить проблеми україни і росії</p><p class="t">готові до питань і дискусій</p><p class="t">чесність — найкраща стратегія</p><p class="t">перед нами стоїть велике завдання</p><p class="t">можемо і повинні зробити разом</p><p class="t"><span class="o">One</span> готовий взятися за будь-який матеріал</p><p class="t"><span class="o">One</span> нікого не буде карати</p><p class="t">просто все зробить краще</p><p class="t">усі можуть жити набагато краще</p><p class="t">таланти, генії, хороші люди повинні жити набагато краще</p><p class="t">через 25 років 90 відсотків людської праці будуть здатні виконувати машини</p><p class="t">потрібно багато переосмислити
+зробимо разом</p><p class="t">у сша, швейцарії, японії теж величезна кількість проблем</p><p class="t">усім буде краще, якщо всім допомогти</p><p class="t"><span class="o">One</span> зробить</p><p class="t">з <span class="o">One</span> роботи приноситимуть користь людству</p><p class="t">людина повинна бути впевнена у всьому
+це завдання і робота <span class="o">One</span></p><p class="t">у всіх будуть резервні 50 прожиткових мінімумів</p><p class="t">завдання на найближчі 50 років
+розвиток, не розкіш</p><p class="t"><span class="o">One</span> виключить неприємні взаємодії між людьми</p><p class="t">найкраще життя з можливих</p><p class="t">правильний світ для геніїв</p><p class="t">світ — наш дім
+давайте зробимо його краще</p><p class="t">дуже багато сил і ресурсів буде вкладено в світову інфраструктуру безпеки</p><p class="t">на <span class="o">One</span> safety відповідальність розуміння і виправлення</p><p class="t">все повинно працювати добре</p><p class="t"><span class="o">One</span> створить усі умови</p><p class="t">ніякої неповаги</p><p class="t">ніякої нерівності</p><p class="t">рівність гідності
+ніхто не може бути принижений</p><p class="t">прозорість, кристальність
+<span class="o">One</span> — достовірна інформація</p><p class="t">відповідати на всі питання
+нести повну відповідальність
+ніколи не йти від них або від неї</p><p class="t"><span class="o">One</span> гарантує чесність</p><p class="t">задавайте питання і ведіть дискусії
+все повинно бути зроблено правильно</p><p class="t">важливо, щоб усі сприяли розвитку світу</p><p class="t"><span class="o">One</span> суттєво підвищить рівень життя в будь-якій країні</p><p class="t">з <span class="o">One</span> неможливі ніякі конфлікти</p><p class="t">обману не може бути</p><p class="t"><span class="o">One</span> підтримує ініціативу
+система відкрита і приваблива</p><p class="t">свобода думки і дій гранично важлива</p><p class="t"><span class="o">One</span> високо цінує вас, ваш розум і ідеї
+дає максимальну зручність і можливості</p><p class="t">буде створена інфраструктура розвитку всіх і всього</p><p class="t"><span class="o">One</span> потрібен усім</p><p class="t">талантам і геніям особливо</p><p class="t">ваш і світовий розвиток — інтереси <span class="o">One</span></p><p class="t">світовий мінімум буде рівний швейцарській середині за рівнем життя і вище за рівнем смаку і щастя</p><p class="t">мінімальна зарплата на рівні двох прожиткових мінімумів вищого рівня</p><p class="t"><span class="o">One</span> одразу створить 100 млн якісних робочих місць</p><p class="t">ніяких спецслужб і розвідок
+розвиток і синергія
+правда і відкритість завжди перемагають</p><p class="t">ніяких криз</p><p class="t">ніякої інфляції</p><p class="t">глобальна і повсюдна безпека</p><p class="t">тривожність знизиться на 96%</p><p class="t">ви завжди зможете звернутися і вам допоможуть</p><p class="t">прожитковий мінімум — оренда хорошого житла, хороша їжа поза домом, хороша медицина</p><p class="t">заохочення туризму і розвитку, виключення зайвих складнощів</p><p class="t">гранична надійність і впевненість</p><p class="t"><span class="o">One</span> готовий</p><p class="t">світ гідний більшого</p><p class="t">людство може жити набагато краще</p><p class="t">людина повинна бути впевнена, що в найгіршому випадку у неї буде гідне житло, їжа і час</p><p class="t">скрізь великі проблеми
+<span class="o">One</span> виправить</p><p class="t"><span class="o">One</span> корисний усім</p><p class="t">усі країни можуть брати участь</p><p class="t">країни — це люди, які хочуть жити добре</p><p class="t">нікому не буде погано</p><p class="t"><span class="o">One</span>
+ваша впевненість у майбутньому</p><p class="t">світова система розвитку і гарант світової безпеки</p><p class="t">україна і росія будуть відкриті і успішні</p><p class="t"><span class="o">One</span> дасть можливості всім</p><p class="t">біженці з другого дня зможуть працювати на хорошій роботі</p><p class="t"><span class="o">One</span> ніколи нікого не ущемить</p><p class="t">принесе плюси і вигоду всім</p><p class="t">у вашому житті не буде поганих або божевільних людей</p><p class="t"><span class="o">One</span> не підведе</p><p class="t">у людей достатньо знань, щоб не допускати криз і війн</p><p class="t">спеціалісти допоможуть зробити вашу найкращу справу
+без зайвих слів і формалізму</p><p class="t"><span class="o">One</span> дає повну свободу, але за необхідності буде поруч</p><p class="t">багато ресурсів буде спрямовано на сприяння талантам і геніям по всьому світу</p><p class="t">кожному варто побувати в 100 містах</p><p class="t">усі зможуть подорожувати</p><p class="t">важливо відчувати і розуміти, що весь світ — дім</p><p class="t"><span class="o">One</span> переможе бідність</p><p class="t">жодна людина не буде бідною</p><p class="t">це повністю в наших силах</p><p class="t">розбирайте, критикуйте і застосовуйте
+головне — світовий результат</p><p class="t">важливо знайти сферу, в якій хочеться розвиватися</p><p class="t"><span class="o">One</span> подбає про те, щоб у всіх сферах було комфортно і повноцінно</p><p class="t">все середземномор’я потребує <span class="o">One</span>, маючи неймовірний потенціал
+весь світ</p><p class="t">все вказує на правильність і необхідність <span class="o">One</span></p><p class="t">війн не може бути</p><p class="t"><span class="o">One</span> safety
+безпека в кожному куточку світу</p><p class="t"><span class="o">One</span> зробить світ набагато краще</p><p class="t">людяність і людинолюбство у фундаменті</p><p class="t">ваш розвиток і успіх — інтерес і відповідальність <span class="o">One</span></p><p class="t">життя всіх стане радіснішим і приємнішим, ніж було будь-коли</p><p class="t">учасникам прекрасне майбутнє</p><p class="t"><span class="o">One</span>
+найкраще середовище для людини</p><p class="t">за 1000 днів <span class="o">One</span> safety кардинально змінить відчуття безпеки у світі і підхід до неї</p><p class="t">підтримуйте <span class="o">One</span>
+результати роботи будуть відчутні скрізь</p><p class="t">в основі щире бажання зробити краще</p><p class="t">взимку корисно спати довше
+робочий час буде скорочено</p><p class="t"><span class="o">One</span> будує прекрасне майбутнє</p><p class="t">завдання — розвиток талантів
+не просто залишення можливості комусь із них чогось досягти якимось шляхом
+це завжди призводить до поганих тенденцій</p><p class="t">підхід іншого рівня</p><p class="t"><span class="o">One</span> належить світу
+вигодонабувачі — усі</p><p class="t">важливе хороше життя всіх людей</p><p class="t">на це є ресурси</p><p class="t">принципи — правда і відкритість</p><p class="t">зроблено для всіх</p><p class="t">участь кожного корисна і важлива</p><p class="t"><span class="o">One</span> зробить мінімальний рівень життя хорошим</p><p class="t">вирішить усі проблеми колишнього срср, латинської америки, азії, африки</p><p class="t">пропозиція всім країнам стати набагато успішнішими</p><p class="t"><span class="o">One</span> необхідний мільярдам людей</p><p class="t">відкритий зрозумілий світ із найкращими умовами</p><p class="t">скоро <span class="o">One</span> safety оголосить перший в історії день без війн</p></section>
+<section id="ua3"><p class="t">допомогти україні, газі, африці
+по-справжньому</p><p class="t">рішення української і світової кризи</p><p class="t">ви можете підтримати гаранта світової безпеки</p><p class="t">тисячократна подяка від мільярдів вигодонабувачів <span class="o">One</span></p><p class="t"><span class="o">One</span> викорінить війни і бідність</p><p class="t"><span class="o">One</span> потрібен 8 мільярдам людей</p><p class="t">2 мільярди без питної води</p><p class="t">багато хто не має гарантій і відчуває безпорадність</p><p class="t">люди страждають, мерзнуть, голодують і гинуть тільки тому, що ще немає <span class="o">One</span></p><p class="t">давайте змінимо світ на краще</p><p class="t">беріть участь, поширюйте
+підтримуйте</p><p class="t">інвестуйте час і розум у майбутнє</p><p class="t">окупиться феноменально</p><p class="t"><span class="o">One</span> змінить світ
+безпека правда відкритість розвиток синергія зручність надійність можливості розум</p></section>
+</div>
+<div class="L ru">
+<section id="ru1"><p class="t g">прожиточный минимум (пм) — хорошее жильё, еда, здоровье
+минимальная зарплата — 2 пм
+2 пм в месяц мамам за содействие развитию ребёнка
+50 пм на развитие всем
+бессрочный беспроцентный допуск 50 пм всем
+0% безработицы
+100% хороших рабочих мест
+до работы максимум 15 минут пешком
+8-часовой рабочий день
+график 2/1
+отпуск от 10%
+рост 250—300%
+0% бюрократии
+на 90% меньше стресса
+100% безопасности</p><p class="t g"><span class="o">One</span> решит все проблемы
+<span class="one-line">обман бедность ненависть стресс войны мошенничество самоубийства психологические проблемы</span>
+кризисы   демографический  миграционный  городского жилья</p><p class="t g g2"><span class="o">One</span>
+удобная надёжная система
+для лучшей жизни каждого</p><p class="t g g2"><span class="o">One</span> safety
+гарант безопасности
+вы забудете слово «война» навсегда</p><p class="t g g2"><span class="o">One</span> development
+отличное жильё по всему миру
+доступное всем в <span class="o">One</span></p><p class="t g g2">talent management
+детальная работа с талантами</p><p class="t g g2">computer intelligence
+профессиональный интеллект</p><p class="t g">pas foundation
+благотворительность</p><p class="t"><a class="m" href="mailto:Onepasworld@gmail.com">Onepasworld@gmail.com</a></p></section>
+<section id="ru2"><p class="t">хорошее жильё, еда, занятость
+безопасность, уверенность, возможности и развитие
+базовые потребности человека, которые <span class="o">One</span> обеспечит всем в короткие сроки</p><p class="t"><span class="o">One</span> несёт полную ответственность</p><p class="t">хорошая жизнь — это минимум</p><p class="t">никаких войн</p><p class="t">никакого обмана</p><p class="t">никаких мошенников</p><p class="t">удобная архитектура всего
+надо напрягать ум
+не нервы</p><p class="t">выгорание снизится на 97%</p><p class="t">самая высокооплачиваемая занятость — многодетное материнство</p><p class="t">хорошая жизнь всех мам с путешествиями, вкусной едой, отличным жильём скоро станет действительностью</p><p class="t">не будет проблемы выбора направления учёбы или работы и неправильного выбора
+<span class="o">One</span> поможет найти, к чему у вас способности и что будет приносить удовольствие</p><p class="t">задача <span class="o">One</span> — раскрывать людей</p><p class="t">вы больше не будете переживать о вашем будущем и будущем ваших детей</p><p class="t">все должны знать о такой возможности
+каждый должен принять решение</p><p class="t">у украины и россии невероятный потенциал
+180 миллионов человек, которым необходим <span class="o">One</span></p><p class="t">люди решат — <span class="o">One</span> начнёт работу</p><p class="t">90% работников мира зарабатывают меньше минимального дохода <span class="o">One</span></p><p class="t">6 миллиардов людей ниже прожиточного минимума <span class="o">One</span></p><p class="t">у всего происходящего нет ответственных
+<span class="o">One</span> несёт полную ответственность с 1 дня</p><p class="t">правда превыше всего</p><p class="t">сейчас больше всего выгоды получают от человеческих слабостей, страхов и глупости
+цель <span class="o">One</span> в вашем развитии</p><p class="t">раскрытых талантов и гениев станет на порядки больше</p><p class="t"><span class="o">One</span> помогает реализовывать задуманное</p><p class="t">удобство очень важно
+сначала удобство для людей, потом внутренние вопросы</p><p class="t">все могут поддержать систему, которая гарантирует мировую безопасность</p><p class="t"><span class="o">One</span> development построит миллиарды квадратных метров отличного жилья в лучших местах мира</p><p class="t">люди забудут, что жильё может быть проблемой или вопросом</p><p class="t">люди не должны беспокоиться</p><p class="t">человек переживает из-за прошлого и будущего
+<span class="o">One</span> уберёт эти переживания</p><p class="t">у всех с рождения будут гибкие графики развития</p><p class="t">есть возможность жить очень хорошо</p><p class="t">ресурсов достаточно</p><p class="t"><span class="o">One</span> принесёт развитие и безопасность в каждый уголок мира</p><p class="t">нет ни одного человека, кто от этого не выиграет</p><p class="t">скоро безопасность перестанут обсуждать, потому что все привыкнут к ней</p><p class="t"><span class="o">One</span>
+прорыв в качестве жизни</p><p class="t">поможем со всеми вопросами и проблемами
+предпринимателям, родителям, талантам</p><p class="t">вытащим миллиарды людей из-за черты бедности
+среди них миллионы талантов, гениев, просто хороших людей</p><p class="t">в <span class="o">One</span> нет ограничения на рабочие места</p><p class="t">ответственные должны создавать возможности, а не ограничивать</p><p class="t">репутация <span class="o">One</span> — его фундамент</p><p class="t"><span class="o">One</span> решит проблемы украины и россии</p><p class="t">готовы к вопросам и дискуссиям</p><p class="t">честность — лучшая стратегия</p><p class="t">перед нами стоит большая задача</p><p class="t">можем и должны сделать вместе</p><p class="t"><span class="o">One</span> готов взяться за любой материал</p><p class="t"><span class="o">One</span> не будет никого наказывать</p><p class="t">просто всё сделает лучше</p><p class="t">все могут жить намного лучше</p><p class="t">таланты, гении, хорошие люди должны жить намного лучше</p><p class="t">через 25 лет 90 процентов человеческого труда будут способны выполнять машины</p><p class="t">нужно многое переосмыслить
+сделаем вместе</p><p class="t">в сша, швейцарии, японии тоже огромное количество проблем</p><p class="t">всем будет лучше, если всем помочь</p><p class="t"><span class="o">One</span> сделает</p><p class="t">с <span class="o">One</span> роботы будут приносить пользу человечеству</p><p class="t">человек должен быть уверен во всём
+это задача и работа <span class="o">One</span></p><p class="t">у всех будут резервные 50 прожиточных минимумов</p><p class="t">задача на ближайшие 50 лет
+развитие, не роскошь</p><p class="t"><span class="o">One</span> исключит неприятные взаимодействия между людьми</p><p class="t">лучшая жизнь из возможных</p><p class="t">правильный мир для гениев</p><p class="t">мир — наш дом
+давайте сделаем его лучше</p><p class="t">очень много сил и ресурсов будет вложено в мировую инфраструктуру безопасности</p><p class="t">на <span class="o">One</span> safety ответственность понимания и исправления</p><p class="t">всё должно работать хорошо</p><p class="t"><span class="o">One</span> создаст все условия</p><p class="t">никакого неуважения</p><p class="t">никакого неравенства</p><p class="t">равенство достоинства
+никто не может быть принижен</p><p class="t">прозрачность, кристальность
+<span class="o">One</span> — достоверная информация</p><p class="t">отвечать на все вопросы
+нести полную ответственность
+никогда не уходить от них или от неё</p><p class="t"><span class="o">One</span> гарантирует честность</p><p class="t">задавайте вопросы и ведите дискуссии
+всё должно быть сделано правильно</p><p class="t">важно, чтобы все способствовали развитию мира</p><p class="t"><span class="o">One</span> существенно повысит уровень жизни в любой стране</p><p class="t">с <span class="o">One</span> невозможны никакие конфликты</p><p class="t">обмана не может быть</p><p class="t"><span class="o">One</span> поддерживает инициативу
+система открыта и привлекательна</p><p class="t">свобода мысли и действий предельно важна</p><p class="t"><span class="o">One</span> высоко ценит вас, ваш ум и идеи
+даёт максимальное удобство и возможности</p><p class="t">будет создана инфраструктура развития всех и всего</p><p class="t"><span class="o">One</span> нужен всем</p><p class="t">талантам и гениям особенно</p><p class="t">ваше и мировое развитие — интересы <span class="o">One</span></p><p class="t">мировой минимум будет равен швейцарской середине по уровню жизни и выше по уровню вкуса и счастья</p><p class="t">минимальная зарплата на уровне двух прожиточных минимумов высшего уровня</p><p class="t"><span class="o">One</span> сразу создаст 100 млн качественных рабочих мест</p><p class="t">никаких спецслужб и разведок
+развитие и синергия
+правда и открытость всегда побеждают</p><p class="t">никаких кризисов</p><p class="t">никакой инфляции</p><p class="t">глобальная и повсеместная безопасность</p><p class="t">тревожность снизится на 96%</p><p class="t">вы всегда сможете обратиться и вам помогут</p><p class="t">прожиточный минимум — аренда хорошего жилья, хорошая еда вне дома, хорошая медицина</p><p class="t">поощрение туризма и развития, исключение лишних сложностей</p><p class="t">предельная надёжность и уверенность</p><p class="t"><span class="o">One</span> готов</p><p class="t">мир достоен большего</p><p class="t">человечество может жить намного лучше</p><p class="t">человек должен быть уверен, что в худшем случае у него будет достойное жильё, еда и время</p><p class="t">везде большие проблемы
+<span class="o">One</span> исправит</p><p class="t"><span class="o">One</span> полезен всем</p><p class="t">все страны могут участвовать</p><p class="t">страны — это люди, которые хотят жить хорошо</p><p class="t">никому не будет плохо</p><p class="t"><span class="o">One</span>
+ваша уверенность в будущем</p><p class="t">мировая система развития и гарант мировой безопасности</p><p class="t">украина и россия будут открыты и успешны</p><p class="t"><span class="o">One</span> даст возможности всем</p><p class="t">беженцы со второго дня смогут работать на хорошей работе</p><p class="t"><span class="o">One</span> никогда никого не ущемит</p><p class="t">принесёт плюсы и выгоду всем</p><p class="t">в вашей жизни не будет плохих или сумасшедших людей</p><p class="t"><span class="o">One</span> не подведёт</p><p class="t">у людей достаточно знаний, чтобы не допускать кризисов и войн</p><p class="t">специалисты помогут сделать ваше лучшее дело
+без лишних слов и формализма</p><p class="t"><span class="o">One</span> даёт полную свободу, но при необходимости будет рядом</p><p class="t">много ресурсов будет направлено на содействие талантам и гениям по всему миру</p><p class="t">каждому стоит побывать в 100 городах</p><p class="t">все смогут путешествовать</p><p class="t">важно ощущать и понимать, что весь мир — дом</p><p class="t"><span class="o">One</span> победит бедность</p><p class="t">ни один человек не будет беден</p><p class="t">это полностью в наших силах</p><p class="t">разбирайте, критикуйте и применяйте
+главное — мировой результат</p><p class="t">важно найти сферу, в которой хочется развиваться</p><p class="t"><span class="o">One</span> позаботится о том, чтобы во всех сферах было комфортно и полноценно</p><p class="t">всё средиземноморье нуждается в <span class="o">One</span>, имея невероятный потенциал
+весь мир</p><p class="t">всё указывает на правильность и необходимость <span class="o">One</span></p><p class="t">войн не может быть</p><p class="t"><span class="o">One</span> safety
+безопасность в каждом уголке мира</p><p class="t"><span class="o">One</span> сделает мир намного лучше</p><p class="t">человечность и человеколюбие в фундаменте</p><p class="t">ваши развитие и успех — интерес и ответственность <span class="o">One</span></p><p class="t">жизнь всех станет радостнее и приятнее, чем была когда-либо</p><p class="t">участникам прекрасное будущее</p><p class="t"><span class="o">One</span>
+лучшая среда для человека</p><p class="t">за 1000 дней <span class="o">One</span> safety кардинально изменит ощущение безопасности в мире и подход к ней</p><p class="t">поддерживайте <span class="o">One</span>
+результаты работы будут ощутимы везде</p><p class="t">в основе искреннее желание сделать лучше</p><p class="t">зимой полезно спать дольше
+рабочее время будет сокращено</p><p class="t"><span class="o">One</span> строит прекрасное будущее</p><p class="t">задача — развитие талантов
+не просто оставление возможности кому-то из них чего-то добиться каким-то путём
+это всегда приводит к плохим тенденциям</p><p class="t">подход другого уровня</p><p class="t"><span class="o">One</span> принадлежит миру
+выгодополучатели — все</p><p class="t">важна хорошая жизнь всех людей</p><p class="t">на это есть ресурсы</p><p class="t">принципы — правда и открытость</p><p class="t">сделано для всех</p><p class="t">участие каждого полезно и важно</p><p class="t"><span class="o">One</span> сделает минимальный уровень жизни хорошим</p><p class="t">решит все проблемы бывшего ссср, латинской америки, азии, африки</p><p class="t">предложение всем странам стать намного успешнее</p><p class="t"><span class="o">One</span> необходим миллиардам людей</p><p class="t">открытый понятный мир с лучшими условиями</p><p class="t">скоро <span class="o">One</span> safety объявит первый в истории день без войн</p></section>
+<section id="ru3"><p class="t">помочь украине, газе, африке
+по-настоящему</p><p class="t">решение украинского и мирового кризиса</p><p class="t">вы можете поддержать гаранта мировой безопасности</p><p class="t">тысячекратная благодарность от миллиардов бенефициаров <span class="o">One</span></p><p class="t"><span class="o">One</span> искоренит войны и бедность</p><p class="t"><span class="o">One</span> нужен 8 миллиардам людей</p><p class="t">2 миллиарда без питьевой воды</p><p class="t">многие не имеют гарантий и ощущают беспомощность</p><p class="t">люди страдают, мёрзнут, голодают и погибают только потому, что ещё нет <span class="o">One</span></p><p class="t">давайте изменим мир к лучшему</p><p class="t">участвуйте распространяйте
+поддерживайте</p><p class="t">инвестируйте время и ум в будущее</p><p class="t">окупится феноменально</p><p class="t"><span class="o">One</span> изменит мир
+безопасность правда открытость развитие синергия удобство надёжность возможности ум</p></section>
+</div>
+</main>
+<script>(function(){
+var d=document.documentElement,B=document.querySelectorAll(".lang button"),N=document.querySelectorAll("nav a");
+var TB=document.getElementById("th"),LB={en:{dark:"dark mode",light:"light mode"},ua:{dark:"темний режим",light:"світлий режим"},ru:{dark:"тёмный режим",light:"светлый режим"}};
+function lab(){var l=d.getAttribute("data-lang")||"en",t=d.getAttribute("data-theme")==="dark"?"light":"dark";TB.textContent=LB[l][t];TB.setAttribute("aria-label",LB[l][t])}
+function theme(t,save){d.setAttribute("data-theme",t);lab();if(save){try{localStorage.setItem("theme",t)}catch(e){}}}
+var th="light";try{th=localStorage.getItem("theme")==="dark"?"dark":"light"}catch(e){}
+theme(th,false);
+TB.addEventListener("click",function(){theme(d.getAttribute("data-theme")==="dark"?"light":"dark",true)});
+function fit(){
+  var all=document.querySelectorAll(".one-line"),vis=null;
+  all.forEach(function(e){e.style.whiteSpace="nowrap";if(e.offsetParent)vis=e});
+  if(vis)d.style.setProperty("--tw",Math.ceil(vis.getBoundingClientRect().width)+"px");
+  all.forEach(function(e){
+    if(!e.offsetParent)return;
+    if(e.getBoundingClientRect().width>e.parentNode.clientWidth+1)e.style.whiteSpace="normal";
+  });
+}
+window.addEventListener("resize",fit);window.addEventListener("load",fit);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+function set(l,save){
+  d.setAttribute("data-lang",l);d.lang=l==="ua"?"uk":l;
+  B.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.l===l))});
+  N.forEach(function(a){a.href="#"+l+a.dataset.n});
+  lab();fit();
+  if(save){try{localStorage.setItem("lang",l)}catch(e){}}
+}
+B.forEach(function(b){b.addEventListener("click",function(){set(b.dataset.l,true);window.scrollTo(0,0)})});
+var l="";
+try{l=localStorage.getItem("lang")||""}catch(e){}
+if(!/^(ru|ua|en)$/.test(l)){l="en"}
+set(l,false);
+})();</script>
+</body>
+</html>
